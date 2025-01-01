@@ -196,15 +196,22 @@
       }
 
       function showGifts() {
-        for (let i = 0; i < 5; i++) {
-          const gift = document.createElement("div");
-          gift.classList.add("gift");
-          gift.innerHTML = "🎁";
-          gift.style.left = `${Math.random() * window.innerWidth}px`;
-          gift.style.animationDuration = `${Math.random() * 5 + 5}s`;
-          document.body.appendChild(gift);
-        }
-      }
+    for (let i = 0; i < 5; i++) {
+      const gift = document.createElement("div");
+      gift.classList.add("gift");
+      gift.innerHTML = "🎁";
+      gift.style.left = `${Math.random() * window.innerWidth}px`;
+      gift.style.animationDuration = `${Math.random() * 5 + 25}s`;
+      gift.addEventListener("click", collectGift);
+      document.body.appendChild(gift);
+    }
+  }
+
+  function collectGift(event) {
+    event.target.remove();
+    const counter = document.getElementById("gift-counter");
+    counter.innerText = parseInt(counter.innerText) + 1;
+  }
 
       createStars();
       createSnowflakes();
